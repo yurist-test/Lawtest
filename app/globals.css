@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap&subset=cyrillic,latin");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Lora", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  * {
+    @apply border-navy-700;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-navy-950 text-ink-100 font-sans antialiased;
+    background-image: radial-gradient(circle at 50% -10%, #16223C 0%, #060A14 60%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-ink-100;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0B1220;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #8F7220;
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #D4AF37;
+  }
+
+  :focus-visible {
+    outline: 2px solid #D4AF37;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-navy-800/40 backdrop-blur-xl border border-gold-500/10 shadow-glass rounded-xl2;
+  }
+
+  .glass-hover {
+    @apply transition-all duration-300 hover:border-gold-500/30 hover:shadow-gold-glow;
+  }
+
+  .text-gold-gradient {
+    @apply bg-gold-gradient bg-clip-text text-transparent;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3
+           font-sans font-semibold text-navy-950 bg-gold-gradient
+           shadow-gold-glow transition-transform duration-200
+           hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3
+           font-sans font-semibold text-ink-100 border border-gold-500/30
+           bg-white/[0.02] backdrop-blur-md transition-colors duration-200
+           hover:bg-gold-500/10 hover:border-gold-500/50;
+  }
+
+  .hairline {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-gold-500/40 to-transparent;
+  }
+
+  .eyebrow {
+    @apply text-xs font-mono uppercase tracking-[0.2em] text-gold-400;
+  }
+
+  .input-glass {
+    @apply w-full rounded-lg border border-white/10 bg-navy-900/60 px-4 py-3
+           text-ink-100 placeholder:text-ink-600
+           transition-colors duration-200
+           focus:border-gold-500/50 focus:outline-none focus:ring-2 focus:ring-gold-500/20;
+  }
+
+  .label-field {
+    @apply mb-2 block text-sm font-medium text-ink-300;
+  }
+
+  .form-error {
+    @apply rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300;
+  }
+}
